@@ -1,0 +1,33 @@
+  SELECT year,
+       month,
+       west,
+       south,
+       west + south AS south_plus_west
+  FROM tutorial.us_housing_units
+
+
+
+  SELECT year,
+       month,
+       west,
+       south,
+       west + south - 4 * year AS nonsense_column
+  FROM tutorial.us_housing_units
+  
+  
+  
+  SELECT year,
+       month,
+       west,
+       south,
+       (west + south)/2 AS south_west_avg
+  FROM tutorial.us_housing_units
+  
+  
+  
+  SELECT *
+  FROM tutorial.us_housing_units
+  WHERE west > (midwest + northeast)
+  
+  
+  
