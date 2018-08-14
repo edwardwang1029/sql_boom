@@ -1,0 +1,15 @@
+  SELECT COUNT(DISTINCT low)
+  FROM tutorial.aapl_historical_stock_price
+  
+  
+  
+  SELECT count(date) as date,
+        count(year) as year,
+        count(month) as month,
+        count(open) as open,
+        count(high) as high,
+        count(low) as low,
+        count(close) as close,
+        count(volume) as volume,
+        count(id) as id
+  FROM tutorial.aapl_historical_stock_price
