@@ -1,0 +1,33 @@
+The WHERE clause won’t work for this because it doesn’t allow you to filter on aggregate columns—that’s where the HAVING clause comes in.
+
+HAVING: is used to check conditions after the aggregation takes place.
+WHERE: is used to check conditions before the aggregation takes place.
+
+This code:
+
+        select City, CNT=Count(1)
+        From Address
+        Where State = 'MA'
+        Group By City
+Gives you a table of all cities in MA and the number of addresses in each city.
+
+This code:
+
+        select City, CNT=Count(1)
+        From Address
+        Where State = 'MA'
+        Group By City
+        Having Count(1)>5
+Gives you a table of cities in MA with more than 5 addresses and the number of addresses in each city.
+
+
+
+SELECT year,
+       month,
+       MAX(high) AS month_high
+  FROM tutorial.aapl_historical_stock_price
+ GROUP BY year, month
+HAVING MAX(high) > 400
+ ORDER BY year, month
+ 
+ 
