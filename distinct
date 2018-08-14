@@ -1,3 +1,10 @@
 SELECT DISTINCT year, month
   FROM tutorial.aapl_historical_stock_price
   
+
+
+SELECT year,
+       COUNT(DISTINCT month) AS months_count
+  FROM tutorial.aapl_historical_stock_price
+ GROUP BY year
+ ORDER BY year
