@@ -15,3 +15,15 @@
  
  
  
+SELECT year, AVG(close - open) as avg_daily_change
+  FROM tutorial.aapl_historical_stock_price
+ GROUP BY year
+ ORDER BY year
+ 
+ 
+ 
+ 
+ SELECT year, month, MAX(high) as max_high, MIN(low) as min_low
+  FROM tutorial.aapl_historical_stock_price
+ GROUP BY year, month
+ ORDER BY year, month
