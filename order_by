@@ -1,0 +1,17 @@
+SELECT *
+  FROM tutorial.billboard_top_100_year_end
+ ORDER BY artist
+ 
+ 
+ 
+ SELECT *
+  FROM tutorial.billboard_top_100_year_end
+ WHERE year = 2013
+ ORDER BY year_rank
+ 
+ 
+ 
+ SELECT *
+  FROM tutorial.billboard_top_100_year_end
+  WHERE year_rank <= 3
+ ORDER BY year DESC, year_rank
