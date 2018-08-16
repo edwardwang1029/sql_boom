@@ -3,13 +3,14 @@
 ### are referred to as “foreign keys” or “join keys.”
 
 
-
+###
 SELECT *
   FROM benn.college_football_players players
   JOIN benn.college_football_teams teams
     ON teams.school_name = players.school_name
 
 
+###
 SELECT teams.conference AS conference,
        AVG(players.weight) AS average_weight
   FROM benn.college_football_players players
@@ -19,3 +20,26 @@ SELECT teams.conference AS conference,
  ORDER BY AVG(players.weight) DESC
 
 
+
+###
+SELECT companies.name AS company_name,
+       companies.status,
+       COUNT(DISTINCT investments.investor_name) AS unqiue_investors
+  FROM tutorial.crunchbase_companies companies
+  LEFT JOIN tutorial.crunchbase_investments investments
+    ON companies.permalink = investments.company_permalink
+ WHERE companies.state_code = 'NY'
+ GROUP BY 1,2
+ ORDER BY 3 DESC
+ 
+ 
+ 
+ ###
+ SELECT CASE WHEN investments.investor_name IS NULL THEN 'No Investors'
+            ELSE investments.investor_name END AS investor,
+       COUNT(DISTINCT companies.permalink) AS companies_invested_in
+  FROM tutorial.crunchbase_companies companies
+  LEFT JOIN tutorial.crunchbase_investments investments
+    ON companies.permalink = investments.company_permalink
+ GROUP BY 1
+ ORDER BY 2 DESC
