@@ -43,3 +43,16 @@ SELECT companies.name AS company_name,
     ON companies.permalink = investments.company_permalink
  GROUP BY 1
  ORDER BY 2 DESC
+ 
+ 
+ 
+ ###
+     SELECT COUNT(CASE WHEN investments.company_permalink IS NOT NULL AND companies.permalink IS NOT NULL 
+    THEN investments.company_permalink ELSE NULL END) AS both,
+    COUNT(CASE WHEN investments.company_permalink IS NULL AND companies.permalink IS NOT NULL 
+    THEN companies.permalink ELSE NULL END) AS company_permalink,
+    COUNT(CASE WHEN investments.company_permalink IS NOT NULL AND companies.permalink IS NULL 
+    THEN investments.company_permalink ELSE NULL END) AS investment_permalink
+    FROM tutorial.crunchbase_companies companies
+    FULL JOIN tutorial.crunchbase_investments_part1 investments
+    ON companies.permalink = investments.company_permalink
